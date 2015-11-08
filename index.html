@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Insights</title>
+  <!-- angular js-->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- bootstrap js -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <!-- app logic (js) -->
+  <script src="index.js"></script>
+  <!-- custom styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div id="wrap">
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Customer Insights</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <!-- <li class="active"><a href="#">Home</a></li> -->
+          <!-- <li><a href="#search">Search</a></li>
+          <li><a href="#add">Add</a></li> -->
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+
+  <div id="main" class="container clear-top" ng-controller="InfoController">
+      <div>
+        <br><br>
+          <h1>Customer Insight Information</h1>
+          <p>
+            This page lists users information, gives insights into their demographic and show "Safe to Spend" amount.
+          </p>
+      </div>
+
+      <!-- div.row>h2{Customer ID:}+div#custom-search-input>div.input-group.col-md-12>input.search-query.form-control+span.input-group-btn>button:button.btn.btn-danger>span.glyphicon.glyphicon-search -->
+      <div class="row">
+        <h2>Customer ID:</h2>
+        <div id="custom-search-input">
+          <div class="input-group col-md-12" id="id-input-form">
+              <input type="number" class="search-query form-control" ng-model="customer.id" ng-minlength="0" ng-maxlength="100000" required name="id-input">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" ng-click="find(customer.id)" ng-disabled="!customer.id">
+                  <!-- not working: || id-input-form.$invalid" -->
+                  <span class="glyphicon glyphicon-search"></span>
+                </button>
+              </span>
+          </div>
+        </div>
+        <pre>JSON Request: <br>{{customer | json}}</pre>
+      </div>
+
+
+<!-- <div class="container"> -->
+<!-- bootstrap -->
+
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" ng-show="id">
+
+
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">ID: {{ id }}</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
+                  <dl>
+                    <dt>DEPARTMENT:</dt>
+                    <dd>Administrator</dd>
+                    <dt>HIRE DATE</dt>
+                    <dd>11/12/2013</dd>
+                    <dt>DATE OF BIRTH</dt>
+                       <dd>11/12/2013</dd>
+                    <dt>GENDER</dt>
+                    <dd>Male</dd>
+                  </dl>
+                </div>-->
+                <div class=" col-md-9 col-lg-9 ">
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Balance:</td>
+                        <td>{{ balance | currency:"€" }}</td>
+                      </tr>
+                      <tr>
+                        <td>Status:</td>
+                        <td>{{ status }}</td>
+                      </tr>
+                      <tr>
+                        <td>Income</td>
+                        <td>{{ income | currency:"€" }}</td>
+                      </tr>
+                      <tr>
+                        <td>Payday</td>
+                        <td>{{ payday }}</td>
+                      </tr>
+                        <td>Age</td>
+                        <td>{{ age }}</td>
+                      </tr>
+                      <tr>
+                        <td>Sex</td>
+                        <td>{{ sex }}</td>
+                      </tr>
+                        <td>County</td>
+                        <td>{{ county }}</td>
+                      </tr>
+                      <!-- </tr>
+                        <td>Rent/Morgage Transactions</td>
+                        <td>{{ rent_transactions }}</td>
+                      </tr>
+                      </tr>
+                        <td>General Transactions</td>
+                        <td>{{ transactions }}</td>
+                      </tr> -->
+                    </tbody>
+                  </table>
+
+                  <a href="#" class="btn btn-primary">Deactivate Account</a>
+                  <a href="#" class="btn btn-primary">Edit Account</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    <!-- <div class="jumbotron text-wrap" ng-show="id">
+      <h3>user details</h3>
+      <ul>
+        <li>ID: {{ id }}</li>
+        <li>Balance: {{ balance }}</li>
+        <li>Status: {{ status }}</li>
+        <li>Income: {{ income }}</li>
+        <li>Payday: {{ payday }}</li>
+        <li>Age: {{ age }}</li>
+      </ul>
+    </div> -->
+
+              <!-- <div class="jumbotron text-wrap" ng-show="user">
+                <h3>all data</h3>
+                <p>{{ user }}</p>
+              </div> -->
+
+</div>
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted">Lean Mean Hacking Machine ©</p>
+    </div>
+  </footer>
+</body>
+</html>

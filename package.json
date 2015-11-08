@@ -1,0 +1,27 @@
+{
+  "name": "customer-insights",
+  "version": "1.0.0",
+  "description": "web app connecting to the aib datathon api in order to display the information in a pleasant and consumable form.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RonanC/customer-insights.git"
+  },
+  "keywords": [
+    "aib",
+    "datathon",
+    "api",
+    "customer",
+    "insights",
+    "banking"
+  ],
+  "author": "Ronan Connolly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RonanC/customer-insights/issues"
+  },
+  "homepage": "https://github.com/RonanC/customer-insights#readme"
+}
