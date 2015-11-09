@@ -13,12 +13,11 @@
 
 var myApp = angular.module('myApp',[]);
 
-myApp.controller('InfoController', ['$scope', '$http', function($scope, $http) {
+myApp.controller('InfoController', ['$scope', '$http', '$window', function($scope, $http, $window) {
     var data = {};
     // Simple GET request example:
     $scope.find = function(id){
-      console.log("find");
-
+      data = {};
       data.cool = $http({
         method: 'GET',
         url: 'http://localhost:5000/datathon/customer/' + id
@@ -26,14 +25,6 @@ myApp.controller('InfoController', ['$scope', '$http', function($scope, $http) {
           // this callback will be called asynchronously
           // when the response is available
           data.user = response.data;
-          //alert(JSON.stringify("success: " + response));
-          console.log("success" + JSON.stringify(response));
-        }, function errorCallback(response) {
-          // called asynchronously if an error occurs
-          // or server returns response with an error status.
-          //alert(JSON.stringify("error: " + response));
-          console.log("error" + JSON.stringify(response));
-          $scope.user = response.data;
 
           $scope.id = response.data._id;
           $scope.balance = response.data.balance;
@@ -46,6 +37,17 @@ myApp.controller('InfoController', ['$scope', '$http', function($scope, $http) {
           $scope.county = response.data.county;
           $scope.rent_transactions = response.data.rent_transactions;
           $scope.transactions = response.data.transactions;
+          //alert(JSON.stringify("success: " + response));
+          //console.log("success" + JSON.stringify(response));
+        }, function errorCallback(response) {
+          // called asynchronously if an error occurs
+          // or server returns response with an error status.
+          //alert(JSON.stringify("error: " + response));
+          console.log("error" + JSON.stringify(response));
+          $window.alert("Error: " + response.data.error + "\nStatus: " + response.status + "\nConfig: " + JSON.stringify(response.config));
+
+          //$scope.user = response.data;
+
         });
       };
 
