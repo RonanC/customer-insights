@@ -19,41 +19,34 @@
 </head>
 
 <body ng-app="myApp">
+  <div id="header" class="navbar-fixed-top navbar-header">
+      <h1>Customer Insights
+        <small>Delve Deeper</small>
+      </h1>
+      <p>
+        User information, insights into demographics and "Safe to Spend" allowance
+      </p>
+  </div>
+
 <div id="wrap">
 
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button> -->
-        <a class="navbar-brand" href="#">Customer Insights</a>
-      </div>
-      <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <!-- <li class="active"><a href="#">Home</a></li> -->
-          <!-- <li><a href="#search">Search</a></li>
-          <li><a href="#add">Add</a></li> -->
-        </ul>
-      </div><!--/.nav-collapse -->
-    </div>
-  </nav>
 
-  <div id="main" class="container clear-top" ng-controller="InfoController">
-      <div>
+
+  <div id="main" class="container" ng-controller="InfoController">
+      <!-- <div>
         <br><br>
-          <h1>Customer Insight Information</h1>
+          <h1>Customer Insights</h1>
+          <small>Delve Deeper</small>
           <p>
             This page lists users information, gives insights into their demographic and show "Safe to Spend" amount.
           </p>
-      </div>
+      </div> -->
 
       <!-- div.row>h2{Customer ID:}+div#custom-search-input>div.input-group.col-md-12>input.search-query.form-control+span.input-group-btn>button:button.btn.btn-danger>span.glyphicon.glyphicon-search -->
-      <div class="row">
+
+     <div class="row">
         <h2>Customer ID:</h2>
+
         <div id="custom-search-input">
           <div class="input-group col-md-12" id="id-input-form">
               <input type="number" class="search-query form-control" ng-model="customer.id" ng-minlength="0" ng-maxlength="100000" required name="id-input">
@@ -72,10 +65,8 @@
 <!-- <div class="container"> -->
 <!-- bootstrap -->
 
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" ng-show="id">
-
-
-          <div class="panel panel-info">
+        <div id="panel" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" ng-show="id">
+          <div class="panel panel-primary">
             <div class="panel-heading">
               <h3 class="panel-title">ID: {{ id }}</h3>
             </div>
@@ -141,6 +132,89 @@
 
           </div>
         </div>
+
+        <!-- Rent/Mortgage  -->
+            <table class="table table-condensed table-striped" ng-show="id">
+              <thead>
+              <tr>
+                <th align="center" colspan="5">
+                  <h2>Rent/Mortgage Transactions</h2>
+                </th>
+                <!-- <th><h2>Test</h2></th> -->
+              </tr>
+
+              <tr>
+                  <th>
+    <h4>Rent Date</h4>
+                  </th>
+                  <th>
+    <h4>Ammount</h4>
+                  </th>
+              </tr>
+      </thead>
+      <tbody>
+              <tr ng-repeat="rent_transaction in rent_transactions">
+                  <td>
+    <p>{{ rent_transaction.rent_date }}</p>
+                  </td>
+                  <td>
+    <p>{{ rent_transaction.ammount | currency:"€" }}</p>
+                  </td>
+              </tr>
+            </tbody>
+            </table>
+
+
+<!-- Transactions -->
+        <table class="table table-condensed table-striped" ng-show="id">
+          <thead>
+          <tr>
+            <th align="center" colspan="5">
+              <h2>Transactions</h2>
+            </th>
+            <!-- <th><h2>Test</h2></th> -->
+          </tr>
+
+          <tr>
+              <th>
+<h4>Date</h4>
+              </th>
+              <th>
+<h4>Category</h4>
+              </th>
+              <th>
+<h4>Subcategory</h4>
+              </th>
+              <th>
+<h4>Ammount</h4>
+              </th>
+              <th>
+<h4>Type</h4>
+              </th>
+          </tr>
+  </thead>
+  <tbody>
+          <tr ng-repeat="transaction in transactions">
+              <td>
+<p>{{ transaction.date }}</p>
+              </td>
+              <td>
+<p>{{ transaction.category }}</p>
+              </td>
+              <td>
+<p>{{ transaction.subcategory }}</p>
+              </td>
+              <td>
+<p>{{ transaction.ammount  | currency:"€"  }}</p>
+              </td>
+              <td>
+<p>{{ transaction.type }}</p>
+              </td>
+          </tr>
+        </tbody>
+        </table>
+
+
       </div>
     <!-- <div class="jumbotron text-wrap" ng-show="id">
       <h3>user details</h3>
@@ -159,9 +233,12 @@
                 <p>{{ user }}</p>
               </div> -->
 
+
+
 </div>
   <footer class="footer">
     <div class="container">
+      <hr>
       <p class="text-muted">Lean Mean Hacking Machine ©</p>
     </div>
   </footer>
