@@ -11,6 +11,9 @@
 //         });
 // }
 
+// localhost:5000/
+var bankingUrl = 'http://178.62.9.141:5000/';
+
 var myApp = angular.module('myApp',[]);
 
 myApp.controller('InfoController', ['$scope', '$http', '$window', function($scope, $http, $window) {
@@ -20,7 +23,7 @@ myApp.controller('InfoController', ['$scope', '$http', '$window', function($scop
       data = {};
       data.cool = $http({
         method: 'GET',
-        url: 'http://localhost:5000/datathon/customer/' + id
+        url: bankingUrl + 'datathon/customer/' + id
       }).then(function successCallback(response) {
           // this callback will be called asynchronously
           // when the response is available
