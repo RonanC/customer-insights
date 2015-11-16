@@ -2,9 +2,10 @@
   "name": "customer-insights",
   "version": "1.0.0",
   "description": "web app connecting to the aib datathon api in order to display the information in a pleasant and consumable form.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
