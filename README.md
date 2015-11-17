@@ -1,5 +1,5 @@
 # Customer Insights Web App
-###### web app connecting to the aib datathon api in order to display the information in a pleasant and consumable form.
+###### Web app connecting to the banking-api in order to display the information in a pleasant and consumable form
 **by Ronan Connolly & John Frizzell**  
 
 ![Customer Insights Logo](https://www.iiflw.com/files/assets/prelogin/insightanalysis/images/NewsandInsights_header_banner.jpeg "Customer Insights")
@@ -36,7 +36,7 @@ We used angular and bootstrap for the web application logic, structure, design a
   
 2 - Datasets used
 ---
-We recieved the data from AIB during the (AIB Datahack competition)[https://www.aibdatahack.com/] on the 7th of November.
+We recieved the data from AIB during the [AIB Datahack competition](https://www.aibdatahack.com/) on the 7th of November.
 
 The banking-api that we are consuming has much data.
 We combined five csv files into a JSON object via MongoDB.
@@ -106,7 +106,7 @@ Welcome to the Banking-API
 ### Retrieves all items  
 **req**  
 ```
-server.com/customer  
+datathon/customer  
 ```
 **res**  
 ```json
@@ -136,7 +136,7 @@ server.com/customer
 5 - Tools & Environment used
 ---
 ### Front-end website 
- - Created the web service with node, npm, express
+ - Created the web service with node and express
  - Angular front end
  - Bootstrap styling
  - Deployed to Heroku
@@ -157,7 +157,7 @@ Next to get the server up and running run:
 
 7 - References
 ---
-- I relied heavily on the [Angular](https://docs.angularjs.org/api), [Bootstrap](http://getbootstrap.com/css/) and [W3 Schools](http://www.w3schools.com/html/default.asp) websites.
+- We relied heavily on the [Angular](https://docs.angularjs.org/api), [Bootstrap](http://getbootstrap.com/css/) and [W3 Schools](http://www.w3schools.com/html/default.asp) websites.
   
 8 - Team
 ---
