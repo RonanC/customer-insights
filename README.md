@@ -8,8 +8,8 @@ Contents:
 ---------
 1. About
 2. Datasets used
-3. How to Query the API
-4. Example use of the API
+3. How to use the web app
+4. How we are using the Banking API
 5. Tools & Environment used
 6. Installation
 7. References
@@ -42,7 +42,7 @@ The banking-api that we are consuming has much data.
 We combined five csv files into a JSON object via MongoDB.
 We tried couch initially but we had queue errors to the vast amount of data being processed.
 
-**Balances, Demographics, Income: **  
+**Balances, Demographics, Income:**  
 10'001 rows  
   
 **Rent:**   
@@ -59,21 +59,24 @@ You will then see a profile panel, rent-transactions table and transacations tab
 You can hide any of these via the checkboxes.
 
 You can also show the JSON Request and Response messages via the checkboxes.
+  
+  
+4 - How we are using the Banking API
+---
 
 This web app is consuming a RESTful api with self-describing urls.  
 With which we are using the GET, PUT, POST and DELETE HTTP verbs on to do various actions.  
 When the urls are queried a JSON object is passed back.  
   
+## Routes
 ### general actions  
  - /  
  - /datathon/customer/
   
 ### specific actions  
  - /datathon/customer/:id
-  
-  
-4 - How we are using the Banking API
----
+ 
+## Queries
 ### Basic website message  
 **req**  
 ```
@@ -148,12 +151,10 @@ Next to get the server up and running run:
 
 7 - References
 ---
-- I relied heavily on the (Angular)[https://docs.angularjs.org/api], (Bootstrap)[http://getbootstrap.com/css/] and (W3 Schools)[http://www.w3schools.com/html/default.asp] websites.
+- I relied heavily on the [Angular](https://docs.angularjs.org/api), [Bootstrap](http://getbootstrap.com/css/) and [W3 Schools](http://www.w3schools.com/html/default.asp) websites.
   
 8 - Team
 ---
 This project was created by Ronan Connolly & John Frizzell, Software Development student in fourth year, term 1, GMIT.  
 
-<a href="https://github.com/RonanC"><img src="https://github.com/RonanC/DodgySpike/blob/master/PromoImages/Ronan.png" width="100px" height="100px" title="Ronan" alt="Ronan Image"/></a>
-
-<a href="https://github.com/JohnMalmsteen"><img src="https://avatars1.githubusercontent.com/u/7085486?v=3&s=400" width="100px" height="100px" title="Ronan" alt="Ronan Image"/></a>
+<a href="https://github.com/RonanC"><img src="https://github.com/RonanC/DodgySpike/blob/master/PromoImages/Ronan.png" width="100px" height="100px" title="Ronan" alt="Ronan Image"/></a> <a href="https://github.com/JohnMalmsteen"><img src="https://avatars1.githubusercontent.com/u/7085486?v=3&s=400" width="100px" height="100px" title="Ronan" alt="Ronan Image"/></a>
