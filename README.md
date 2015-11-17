@@ -106,7 +106,7 @@ Welcome to the Banking-API
 ### Retrieves all items  
 **req**  
 ```
-server.com/customer  
+datathon/customer  
 ```
 **res**  
 ```json
