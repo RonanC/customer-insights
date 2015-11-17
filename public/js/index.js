@@ -17,17 +17,18 @@ var bankingUrl = 'http://178.62.9.141:5000/';
 var myApp = angular.module('myApp',[]);
 
 myApp.controller('InfoController', ['$scope', '$http', '$window', function($scope, $http, $window) {
-    var data = {};
-    // Simple GET request example:
+    var user = {};
+
+    // Get user data by id
     $scope.find = function(id){
       data = {};
-      data.cool = $http({
+      data.userInfo = $http({
         method: 'GET',
         url: bankingUrl + 'datathon/customer/' + id
       }).then(function successCallback(response) {
           // this callback will be called asynchronously
           // when the response is available
-          data.user = response.data;
+          $scope.user = response.data;
 
           $scope.id = response.data._id;
           $scope.balance = response.data.balance;
@@ -70,7 +71,41 @@ myApp.controller('InfoController', ['$scope', '$http', '$window', function($scop
         $scope.tPredicate = tPredicate;
       };
 
-      // transactions
+      // deactivate account
+      $scope.deactivate = function(id){
+        data = {};
+        data.cool = $http({
+          method: 'GET',
+          url: bankingUrl + 'datathon/customer/' + id
+        }).then(function successCallback(response) {
+            // this callback will be called asynchronously
+            // when the response is available
+            data.user = response.data;
 
-      return data;
+            $scope.id = response.data._id;
+            $scope.balance = response.data.balance;
+            $scope.status = response.data.status;
+            $scope.income = response.data.income;
+            $scope.payday = response.data.payday;
+            $scope.age = response.data.age;
+
+            $scope.sex = response.data.sex;
+            $scope.county = response.data.county;
+            $scope.rent_transactions = response.data.rent_transactions;
+            $scope.transactions = response.data.transactions;
+            //alert(JSON.stringify("success: " + response));
+            //console.log("success" + JSON.stringify(response));
+          }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            //alert(JSON.stringify("error: " + response));
+            console.log("error" + JSON.stringify(response));
+            $window.alert("Error: " + response.data.error + "\nStatus: " + response.status + "\nConfig: " + JSON.stringify(response.config));
+
+            //$scope.user = response.data;
+
+          });
+        };
+
+      return user;
 }]);

@@ -29,9 +29,6 @@
   </div>
 
 <div id="wrap">
-
-
-
   <div id="main" class="container" ng-controller="InfoController">
       <!-- <div>
         <br><br>
@@ -58,83 +55,102 @@
               </span>
           </div>
         </div>
-        <pre>JSON Request: <br>{{customer | json}}</pre>
       </div>
 
+<div class="checkbox">
+  <label><input type="checkbox" ng-model="showReq">Show Raw JSON Request</label>
+</div>
+<div class="checkbox">
+  <label><input type="checkbox" ng-model="showRes">Show Raw JSON Response</label>
+</div>
+<div class="checkbox">
+  <label><input type="checkbox" ng-model="hideProf">Hide User Profile</label>
+</div>
+<div class="checkbox">
+  <label><input type="checkbox" ng-model="hideRent">Hide Rent Transactions</label>
+</div>
+<div class="checkbox">
+  <label><input type="checkbox" ng-model="hideTrans">Hide Transactions</label>
+</div>
+<!-- <div class="checkbox disabled">
+  <label><input type="checkbox" value="" disabled>Option 3</label>
+</div> -->
+<pre ng-show="showReq">JSON Request: <br>{{customer | json}}</pre>
+<pre ng-show="showRes">User data: {{ user | json }}</pre>
 
 <!-- <div class="container"> -->
-<!-- bootstrap -->
 
-        <div id="panel" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" ng-show="id">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">ID: {{ id }}</h3>
-            </div>
-            <div class="panel-body">
-              <div class="row">
-                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
-                  <dl>
-                    <dt>DEPARTMENT:</dt>
-                    <dd>Administrator</dd>
-                    <dt>HIRE DATE</dt>
-                    <dd>11/12/2013</dd>
-                    <dt>DATE OF BIRTH</dt>
-                       <dd>11/12/2013</dd>
-                    <dt>GENDER</dt>
-                    <dd>Male</dd>
-                  </dl>
-                </div>-->
-                <div class=" col-md-9 col-lg-9 ">
-                  <table class="table table-user-information">
-                    <tbody>
-                      <tr>
-                        <td>Balance:</td>
-                        <td>{{ balance | currency:"€" }}</td>
-                      </tr>
-                      <tr>
-                        <td>Status:</td>
-                        <td>{{ status }}</td>
-                      </tr>
-                      <tr>
-                        <td>Income</td>
-                        <td>{{ income | currency:"€" }}</td>
-                      </tr>
-                      <tr>
-                        <td>Payday</td>
-                        <td>{{ payday }}</td>
-                      </tr>
-                        <td>Age</td>
-                        <td>{{ age }}</td>
-                      </tr>
-                      <tr>
-                        <td>Sex</td>
-                        <td>{{ sex }}</td>
-                      </tr>
-                        <td>County</td>
-                        <td>{{ county }}</td>
-                      </tr>
-                      <!-- </tr>
-                        <td>Rent/Morgage Transactions</td>
-                        <td>{{ rent_transactions }}</td>
-                      </tr>
-                      </tr>
-                        <td>General Transactions</td>
-                        <td>{{ transactions }}</td>
-                      </tr> -->
-                    </tbody>
-                  </table>
+<!-- user panel -->
+<div id="panel" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" ng-show="id && !hideProf">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">ID: {{ id }}</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
+          <dl>
+            <dt>DEPARTMENT:</dt>
+            <dd>Administrator</dd>
+            <dt>HIRE DATE</dt>
+            <dd>11/12/2013</dd>
+            <dt>DATE OF BIRTH</dt>
+               <dd>11/12/2013</dd>
+            <dt>GENDER</dt>
+            <dd>Male</dd>
+          </dl>
+        </div>-->
+        <div class=" col-md-9 col-lg-9 ">
+          <table class="table table-user-information">
+            <tbody>
+              <tr>
+                <td>Balance:</td>
+                <td>{{ balance | currency:"€" }}</td>
+              </tr>
+              <tr>
+                <td>Status:</td>
+                <td>{{ status }}</td>
+              </tr>
+              <tr>
+                <td>Income</td>
+                <td>{{ income | currency:"€" }}</td>
+              </tr>
+              <tr>
+                <td>Payday</td>
+                <td>{{ payday }}</td>
+              </tr>
+                <td>Age</td>
+                <td>{{ age }}</td>
+              </tr>
+              <tr>
+                <td>Sex</td>
+                <td>{{ sex }}</td>
+              </tr>
+                <td>County</td>
+                <td>{{ county }}</td>
+              </tr>
+              <!-- </tr>
+                <td>Rent/Morgage Transactions</td>
+                <td>{{ rent_transactions }}</td>
+              </tr>
+              </tr>
+                <td>General Transactions</td>
+                <td>{{ transactions }}</td>
+              </tr> -->
+            </tbody>
+          </table>
 
-                  <a href="#" class="btn btn-primary">Deactivate Account</a>
-                  <a href="#" class="btn btn-primary">Edit Account</a>
-                </div>
-              </div>
-            </div>
-
-          </div>
+          <a href="#" class="btn btn-primary">Deactivate Account</a>
+          <a href="#" class="btn btn-primary">Edit Account</a>
         </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- Rent/Mortgage  -->
-<table class="table table-condensed table-striped" ng-show="id">
+<table class="table table-condensed table-striped table-hover" ng-show="id  && !hideRent">
 <thead>
   <tr>
     <th align="center" colspan="5">
@@ -148,7 +164,7 @@
     <th>
       <h4>
         <span class="sortorder" ng-show="rPredicate=='rent_date'" ng-class="{reverse:rReverse}"></span>
-        <a href="" ng-click="rOrder('rent_date')">Date</a>
+        <a href="" ng-click="rOrder('rent_date')">Date<i class="icon-sort"></i></a>
       </h4>
     </th>
 
@@ -171,7 +187,7 @@
 
 
 <!-- Transactions -->
-<table class="table table-condensed table-striped" ng-show="id">
+<table class="table table-condensed table-striped table-hover" ng-show="id  && !hideTrans">
 <thead>
 
 <tr>
@@ -251,7 +267,10 @@
   <footer class="footer">
     <div class="container">
       <hr>
-      <p class="text-muted">Lean Mean Hacking Machine ©</p>
+      <p class="text-muted">
+      Lean Mean Hacking Machine ©
+      <span class="pull-right"><a style="color:inherit" target="_blank" href="https://github.com/RonanC/customer-insights">Fork Us</a></span>
+      <p>
     </div>
   </footer>
 </body>
