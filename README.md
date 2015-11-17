@@ -48,7 +48,7 @@ We tried couch initially but we had queue errors to the vast amount of data bein
 **Income:**  
 10'001 rows  
 
-**Income:**  
+**Demographics:**  
 10'001 rows  
   
 **Rent:**   
