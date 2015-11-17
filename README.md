@@ -161,6 +161,8 @@ Next to get the server up and running run:
   
 8 - Team
 ---
-This project was created by Ronan Connolly & John Frizzell, Software Development students in fourth year, term 1, GMIT for the Semantic Web & Linked Data Module.
+This project was created by Ronan Connolly & John Frizzell,  
+Software Development students in fourth year, term 1, GMIT  
+for the Semantic Web & Linked Data Module.
 
 <a href="https://github.com/RonanC"><img src="https://github.com/RonanC/DodgySpike/blob/master/PromoImages/Ronan.png" width="100px" height="100px" title="Ronan" alt="Ronan Image"/></a> <a href="https://github.com/JohnMalmsteen"><img src="https://avatars1.githubusercontent.com/u/7085486?v=3&s=400" width="100px" height="100px" title="Ronan" alt="Ronan Image"/></a>
