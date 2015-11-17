@@ -42,3 +42,11 @@ html, body {
     letter-spacing: 1px;
     border-radius:5;
 }
+
+/* sorting */
+.sortorder:after {
+  content: '\25b2';
+}
+.sortorder.reverse:after {
+  content: '\25bc';
+}

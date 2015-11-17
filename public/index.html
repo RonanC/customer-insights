@@ -133,107 +133,119 @@
           </div>
         </div>
 
-        <!-- Rent/Mortgage  -->
-            <table class="table table-condensed table-striped" ng-show="id">
-              <thead>
-              <tr>
-                <th align="center" colspan="5">
-                  <h2>Rent/Mortgage Transactions</h2>
-                </th>
-                <!-- <th><h2>Test</h2></th> -->
-              </tr>
+<!-- Rent/Mortgage  -->
+<table class="table table-condensed table-striped" ng-show="id">
+<thead>
+  <tr>
+    <th align="center" colspan="5">
+      <h2>Rent/Mortgage Transactions</h2>
+      <!-- <pre>Sorting rPredicate = {{rPredicate}}; rReverse = {{rReverse}}</pre> -->
+      [ <a href="" ng-click="rPredicate=''">unsorted</a> ]
+    </th>
+  </tr>
 
-              <tr>
-                  <th>
-    <h4>Rent Date</h4>
-                  </th>
-                  <th>
-    <h4>Ammount</h4>
-                  </th>
-              </tr>
-      </thead>
-      <tbody>
-              <tr ng-repeat="rent_transaction in rent_transactions">
-                  <td>
-    <p>{{ rent_transaction.rent_date }}</p>
-                  </td>
-                  <td>
-    <p>{{ rent_transaction.ammount | currency:"€" }}</p>
-                  </td>
-              </tr>
-            </tbody>
-            </table>
+  <tr>
+    <th>
+      <h4>
+        <span class="sortorder" ng-show="rPredicate=='rent_date'" ng-class="{reverse:rReverse}"></span>
+        <a href="" ng-click="rOrder('rent_date')">Date</a>
+      </h4>
+    </th>
+
+    <th>
+      <h4>
+        <span class="sortorder" ng-show="rPredicate=='ammount'" ng-class="{reverse:rReverse}"></span>
+        <a href="" ng-click="rOrder('ammount')">Ammount</a>
+      </h4>
+    </th>
+  </tr>
+</thead>
+
+<tbody>
+  <tr ng-repeat="rent_transaction in rent_transactions | orderBy:rPredicate:rReverse">
+    <td>{{ rent_transaction.rent_date }}</td>
+    <td>{{ rent_transaction.ammount | currency:"€" }}</td>
+  </tr>
+</tbody>
+</table>
 
 
 <!-- Transactions -->
-        <table class="table table-condensed table-striped" ng-show="id">
-          <thead>
-          <tr>
-            <th align="center" colspan="5">
-              <h2>Transactions</h2>
-            </th>
-            <!-- <th><h2>Test</h2></th> -->
-          </tr>
+<table class="table table-condensed table-striped" ng-show="id">
+<thead>
 
-          <tr>
-              <th>
-<h4>Date</h4>
-              </th>
-              <th>
-<h4>Category</h4>
-              </th>
-              <th>
-<h4>Subcategory</h4>
-              </th>
-              <th>
-<h4>Ammount</h4>
-              </th>
-              <th>
-<h4>Type</h4>
-              </th>
-          </tr>
-  </thead>
-  <tbody>
-          <tr ng-repeat="transaction in transactions">
-              <td>
-<p>{{ transaction.date }}</p>
-              </td>
-              <td>
-<p>{{ transaction.category }}</p>
-              </td>
-              <td>
-<p>{{ transaction.subcategory }}</p>
-              </td>
-              <td>
-<p>{{ transaction.ammount  | currency:"€"  }}</p>
-              </td>
-              <td>
-<p>{{ transaction.type }}</p>
-              </td>
-          </tr>
-        </tbody>
-        </table>
+<tr>
+  <th align="center" colspan="5">
+    <h2>Transactions</h2>
+    <!-- <pre>Sorting tPredicate = {{tPredicate}}; tReverse = {{tReverse}}</pre> -->
+    [ <a href="" ng-click="tPredicate=''">unsorted</a> ]
+  </th>
+</tr>
 
+<tr>
+<th>
+  <h4>
+    <span class="sortorder" ng-show="tPredicate=='date'" ng-class="{reverse:tReverse}"></span>
+    <a href="" ng-click="tOrder('date')">Date</a>
+  </h4>
+</th>
 
-      </div>
-    <!-- <div class="jumbotron text-wrap" ng-show="id">
-      <h3>user details</h3>
-      <ul>
-        <li>ID: {{ id }}</li>
-        <li>Balance: {{ balance }}</li>
-        <li>Status: {{ status }}</li>
-        <li>Income: {{ income }}</li>
-        <li>Payday: {{ payday }}</li>
-        <li>Age: {{ age }}</li>
-      </ul>
-    </div> -->
+<th>
+  <h4>
+    <span class="sortorder" ng-show="tPredicate=='category'" ng-class="{reverse:tReverse}"></span>
+    <a href="" ng-click="tOrder('category')">Category</a>
+  </h4>
+</th>
 
-              <!-- <div class="jumbotron text-wrap" ng-show="user">
-                <h3>all data</h3>
-                <p>{{ user }}</p>
-              </div> -->
+<th>
+  <h4>
+    <span class="sortorder" ng-show="tPredicate=='subcategory'" ng-class="{reverse:tReverse}"></span>
+    <a href="" ng-click="tOrder('subcategory')">Subcategory</a>
+  </h4>
+</th>
 
+<th>
+  <h4>
+    <span class="sortorder" ng-show="tPredicate=='ammount'" ng-class="{reverse:tReverse}"></span>
+    <a href="" ng-click="tOrder('ammount')">Ammount</a>
+  </h4>
+</th>
 
+<th>
+  <h4>
+    <span class="sortorder" ng-show="tPredicate=='type'" ng-class="{reverse:tReverse}"></span>
+    <a href="" ng-click="tOrder('type')">Type</a>
+  </h4>
+</th>
+
+</tr>
+</thead>
+
+<tbody>
+<tr ng-repeat="transaction in transactions | orderBy:tPredicate:tReverse">
+  <td>
+    <p>{{ transaction.date }}</p>
+  </td>
+
+  <td>
+    <p>{{ transaction.category }}</p>
+  </td>
+
+  <td>
+    <p>{{ transaction.subcategory }}</p>
+  </td>
+
+  <td>
+    <p>{{ transaction.ammount  | currency:"€"  }}</p>
+  </td>
+
+  <td>
+    <p>{{ transaction.type }}</p>
+  </td>
+</tr>
+</tbody>
+</table>
+</div>
 
 </div>
   <footer class="footer">

@@ -54,7 +54,23 @@ myApp.controller('InfoController', ['$scope', '$http', '$window', function($scop
         });
       };
 
-      return data;
-// }
+      // rent
+      $scope.rPredicate = 'rent_date';
+      $scope.rReverse = true;
+      $scope.rOrder = function(rPredicate) {
+        $scope.rReverse = ($scope.rPredicate === rPredicate) ? !$scope.rReverse : false;
+        $scope.rPredicate = rPredicate;
+      };
 
+      // transactions
+      $scope.tPredicate = 'date';
+      $scope.tReverse = true;
+      $scope.tOrder = function(tPredicate) {
+        $scope.tReverse = ($scope.tPredicate === tPredicate) ? !$scope.tReverse : false;
+        $scope.tPredicate = tPredicate;
+      };
+
+      // transactions
+
+      return data;
 }]);
