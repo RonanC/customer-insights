@@ -32,31 +32,17 @@
 
 <div id="wrap">
   <div id="main" class="container" ng-controller="InfoController">
-      <!-- <div>
-        <br><br>
-          <h1>Customer Insights</h1>
-          <small>Delve Deeper</small>
-          <p>
-            This page lists users information, gives insights into their demographic and show "Safe to Spend" amount.
-          </p>
-      </div> -->
-
-      <!-- div.row>h2{Customer ID:}+div#custom-search-input>div.input-group.col-md-12>input.search-query.form-control+span.input-group-btn>button:button.btn.btn-danger>span.glyphicon.glyphicon-search -->
-
      <div class="row">
         <h2>Customer ID:</h2>
 
         <div id="custom-search-input">
           <form class="input-group col-md-12" id="id-input-form" ng-submit="find(customer.id)">
-            <!-- <form > -->
               <input type="number" class="search-query form-control" ng-model="customer.id" ng-minlength="0" ng-maxlength="100000" required name="id-input" placeholder="Enter a number between 1 and 10'000">
               <span class="input-group-btn">
                 <button class="btn btn-primary" ng-click="find(customer.id)" ng-disabled="!customer.id">
-                  <!-- not working: || id-input-form.$invalid" -->
                   <span class="glyphicon glyphicon-search"></span>
                 </button>
               </span>
-            <!-- </form> -->
           </form>
         </div>
       </div>
@@ -76,17 +62,17 @@
 <div class="checkbox">
   <label><input type="checkbox" ng-model="hideTrans">Hide Transactions</label>
 </div>
-<!-- <div class="checkbox disabled">
-  <label><input type="checkbox" value="" disabled>Option 3</label>
-</div> -->
+
 <pre ng-show="showReq">JSON Request: <br>{{customer | json}}</pre>
 <pre ng-show="showRes">JSON Response: {{ user | json }}</pre>
 
-<!-- <div class="container"> -->
-
 <!-- user panel -->
+  <!-- <div>
+    <p ng-class="{'text-lowercase':editMode}">Hello World</p>
+  </div> -->
+
 <div id="panel" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" ng-show="id && !hideProf">
-  <div class="panel panel-primary">
+  <div class="panel" ng-class="{'panel-primary':status=='open', 'panel-danger':status=='closed', 'panel-warning':status=='unknown'}">
     <div class="panel-heading">
       <h3 class="panel-title">ID: {{ id }}</h3>
     </div>
@@ -121,7 +107,10 @@
               </tr>
               <tr>
                 <td>Payday</td>
-                <td>{{ payday }}</td>
+                <td>
+                  <span ng-hide="editMode">{{ payday }}</span>
+                  <input ng-show="editMode" type="text" ng-model="payday" autofocus>
+                </td>
               </tr>
                 <td>Age</td>
                 <td>{{ age }}</td>
@@ -131,21 +120,21 @@
                 <td>{{ sex }}</td>
               </tr>
                 <td>County</td>
-                <td>{{ county }}</td>
+                <td>
+                  <span ng-hide="editMode">{{ county }}</span>
+                  <input ng-show="editMode" type="text" ng-model="county" autofocus>
+                  <!-- <span ng-hide="county.editing" ng-dblclick="editItem(county)">{{ county }}</span> -->
+                  <!-- <input ng-show="county.editing" ng-model="county.name" ng-blur="doneEditing(county)" autofocus /> -->
+                </td>
               </tr>
-              <!-- </tr>
-                <td>Rent/Morgage Transactions</td>
-                <td>{{ rent_transactions }}</td>
-              </tr>
-              </tr>
-                <td>General Transactions</td>
-                <td>{{ transactions }}</td>
-              </tr> -->
             </tbody>
           </table>
 
-          <a href="#" class="btn btn-primary">Deactivate Account</a>
-          <a href="#" class="btn btn-primary">Edit Account</a>
+          <a ng-hide="editMode" href="#" class="btn btn-primary" ng-click="deacUser(id)"> {{ btnActivate }} </a>
+          <a ng-hide="editMode" href="#" class="btn btn-primary" ng-click="editUser()">Edit Account</a>
+
+          <a ng-show="editMode" href="#" class="btn btn-primary" ng-click="saveEdits(id, payday, county)">Save</a>
+          <a ng-show="editMode" href="#" class="btn btn-primary" ng-click="cancelEdits()">Cancel</a>
         </div>
       </div>
     </div>
@@ -196,7 +185,9 @@
 
 <tr>
   <th align="center" colspan="5">
-    <h2>Transactions</h2>
+    <h2>Transactions
+      <a href="#" class="btn btn-primary" ng-click="newTrans(id, , , )">Post New Transaction</a>
+    </h2>
     <!-- <pre>Sorting tPredicate = {{tPredicate}}; tReverse = {{tReverse}}</pre> -->
     [ <a href="" ng-click="tPredicate=''">unsorted</a> ]
   </th>
