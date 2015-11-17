@@ -136,7 +136,7 @@ server.com/customer
 5 - Tools & Environment used
 ---
 ### Front-end website 
- - Created the web service with node, npm, express
+ - Created the web service with node and express
  - Angular front end
  - Bootstrap styling
  - Deployed to Heroku
@@ -157,7 +157,7 @@ Next to get the server up and running run:
 
 7 - References
 ---
-- I relied heavily on the [Angular](https://docs.angularjs.org/api), [Bootstrap](http://getbootstrap.com/css/) and [W3 Schools](http://www.w3schools.com/html/default.asp) websites.
+- We relied heavily on the [Angular](https://docs.angularjs.org/api), [Bootstrap](http://getbootstrap.com/css/) and [W3 Schools](http://www.w3schools.com/html/default.asp) websites.
   
 8 - Team
 ---
