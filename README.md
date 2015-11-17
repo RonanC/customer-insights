@@ -1,5 +1,5 @@
 # Customer Insights Web App
-###### web app connecting to the aib datathon api in order to display the information in a pleasant and consumable form.
+###### Web app connecting to the banking-api in order to display the information in a pleasant and consumable form
 **by Ronan Connolly & John Frizzell**  
 
 ![Customer Insights Logo](https://www.iiflw.com/files/assets/prelogin/insightanalysis/images/NewsandInsights_header_banner.jpeg "Customer Insights")
