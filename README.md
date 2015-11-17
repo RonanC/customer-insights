@@ -42,7 +42,13 @@ The banking-api that we are consuming has much data.
 We combined five csv files into a JSON object via MongoDB.
 We tried couch initially but we had queue errors to the vast amount of data being processed.
 
-**Balances, Demographics, Income:**  
+**Balances:**  
+10'001 rows  
+
+**Income:**  
+10'001 rows  
+
+**Income:**  
 10'001 rows  
   
 **Rent:**   
