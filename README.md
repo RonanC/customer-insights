@@ -36,7 +36,7 @@ We used angular and bootstrap for the web application logic, structure, design a
   
 2 - Datasets used
 ---
-We recieved the data from AIB during the (AIB Datahack competition)[https://www.aibdatahack.com/] on the 7th of November.
+We recieved the data from AIB during the [AIB Datahack competition](https://www.aibdatahack.com/) on the 7th of November.
 
 The banking-api that we are consuming has much data.
 We combined five csv files into a JSON object via MongoDB.
