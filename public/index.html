@@ -47,15 +47,17 @@
         <h2>Customer ID:</h2>
 
         <div id="custom-search-input">
-          <div class="input-group col-md-12" id="id-input-form">
-              <input type="number" class="search-query form-control" ng-model="customer.id" ng-minlength="0" ng-maxlength="100000" required name="id-input">
+          <form class="input-group col-md-12" id="id-input-form" ng-submit="find(customer.id)">
+            <!-- <form > -->
+              <input type="number" class="search-query form-control" ng-model="customer.id" ng-minlength="0" ng-maxlength="100000" required name="id-input" placeholder="Enter a number between 1 and 10'000">
               <span class="input-group-btn">
                 <button class="btn btn-primary" ng-click="find(customer.id)" ng-disabled="!customer.id">
                   <!-- not working: || id-input-form.$invalid" -->
                   <span class="glyphicon glyphicon-search"></span>
                 </button>
               </span>
-          </div>
+            <!-- </form> -->
+          </form>
         </div>
       </div>
 
