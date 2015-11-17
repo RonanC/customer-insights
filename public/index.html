@@ -14,8 +14,10 @@
   <!-- app logic (js) -->
 
   <script src="/scripts/index.js"></script>
-  <!-- custom styles -->
+  <!-- custom styles . -->
   <link rel="stylesheet" href="/styles/style.css">
+
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 </head>
 
 <body ng-app="myApp">
@@ -76,7 +78,7 @@
   <label><input type="checkbox" value="" disabled>Option 3</label>
 </div> -->
 <pre ng-show="showReq">JSON Request: <br>{{customer | json}}</pre>
-<pre ng-show="showRes">User data: {{ user | json }}</pre>
+<pre ng-show="showRes">JSON Response: {{ user | json }}</pre>
 
 <!-- <div class="container"> -->
 
