@@ -12,6 +12,8 @@ app.use("/scripts", express.static(__dirname + '/public/js'));
 app.use("/images",  express.static(__dirname + '/public/images'));
 app.use("/",  express.static(__dirname + '/public'));
 
+
+
 app.get('/', function(req, res){
   res.contentType('text/html');
   res.status(200);

@@ -11,8 +11,8 @@
 //         });
 // }
 
-// localhost:5000/
-var bankingUrl = 'http://178.62.9.141:5000/';
+var bankingUrl = "localhost:8080/";
+//var bankingUrl = 'http://178.62.9.141:8080/';
 
 var myApp = angular.module('myApp',[]);
 
@@ -99,24 +99,24 @@ myApp.controller('InfoController', ['$scope', '$http', '$window', function($scop
     // deactivate user account (DELETE)
     $scope.deacUser = function(id){
       // MOCK INFO, COMMENT OUT ONCE BACK END HOOKED UP
-      if ($scope.status == "closed") {
-        $scope.status = "open";
-        $scope.btnActivate = "Deactivate Account";
-        // $scope.panelCol = "panel panel-primary";
-      }
-      else if ($scope.status == "open") {
-        $scope.status = "closed";
-        $scope.btnActivate = "Activate Account";
-        // $scope.panelCol = "panel panel-danger";
-      }
-      else{
-        $scope.status = "unknown";
-        $scope.btnActivate = "Activate Account";
-        // $scope.panelCol = "panel panel-warning";
-      }
+      // if ($scope.status == "closed") {
+      //   $scope.status = "open";
+      //   $scope.btnActivate = "Deactivate Account";
+      //   // $scope.panelCol = "panel panel-primary";
+      // }
+      // else if ($scope.status == "open") {
+      //   $scope.status = "closed";
+      //   $scope.btnActivate = "Activate Account";
+      //   // $scope.panelCol = "panel panel-danger";
+      // }
+      // else{
+      //   $scope.status = "unknown";
+      //   $scope.btnActivate = "Activate Account";
+      //   // $scope.panelCol = "panel panel-warning";
+      // }
 
       // ACTIVATE ONCE BACKEND HOOKED UP
-      //$scope.delUser(id);
+      $scope.delUser(id);
     };
 
     $scope.delUser = function(id){
