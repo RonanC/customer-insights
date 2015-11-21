@@ -11,7 +11,7 @@
 //         });
 // }
 
-var bankingUrl = "localhost:8080/";
+var bankingUrl = "localhost:5000/";
 //var bankingUrl = 'http://178.62.9.141:8080/';
 
 var myApp = angular.module('myApp',[]);
