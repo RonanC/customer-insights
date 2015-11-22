@@ -90,7 +90,7 @@
             <dd>Male</dd>
           </dl>
         </div>-->
-        <div class=" col-md-9 col-lg-9 ">
+        <form class="col-md-9 col-lg-9" name="userForm">
           <table class="table table-user-information">
             <tbody>
               <tr>
@@ -133,9 +133,9 @@
           <a ng-hide="editMode" class="btn btn-primary" ng-click="deacUser(id)"> {{ btnActivate }} </a>
           <a ng-hide="editMode" class="btn btn-primary" ng-click="editUser()">Edit Account</a>
 
-          <a ng-show="editMode" class="btn btn-primary" ng-click="saveEdits(id, payday, county)">Save</a>
+          <a ng-disabled="userForm.$invalid" ng-show="editMode" class="btn btn-primary" ng-click="userForm.$valid && saveEdits(id, payday, county)">Save</a>
           <a ng-show="editMode" class="btn btn-primary" ng-click="cancelEdits()">Cancel</a>
-        </div>
+        </form>
       </div>
     </div>
 
@@ -182,7 +182,7 @@
 
     <td>
       <form name="rentForm">
-        <input type="number" ng-model="postReAmmount" ng-minlength="0" ng-maxlength="10000" autofocus required>
+        <input type="number" ng-model="postReAmmount" ng-minlength="0" ng-maxlength="10000" autofocus required min="0" max="99999">
         <!-- <a ng-disabled="!postReAmmount" ng-show="postReRow" class="btn btn-primary" ng-click="newRent(id, postReAmmount)">Save</a> -->
         <!-- <button type="button" name="button" ng-disabled="rentForm.$invalid">Test</button> -->
       </form>
@@ -206,7 +206,7 @@
   <th align="center" colspan="5">
     <h2>Transactions
       <a ng-show="!postTrRow" class="btn btn-primary" ng-click="togglePostTrans()">Post New Transaction</a>
-      <a ng-disabled="!transForm.$valid" ng-show="postTrRow" class="btn btn-primary" ng-click="transForm.$valid && newTrans(id, postTrCategory, postTrSubcategory, postTrAmmount, postTrType)">Save</a>
+      <a ng-disabled="!transForm.$valid" ng-show="postTrRow" class="btn btn-primary" ng-click="transForm.$valid && newTrans(id, postTr.category, postTr.subcategory, postTr.ammount, postTr.type)">Save</a>
       <a ng-show="postTrRow" class="btn btn-primary" ng-click="togglePostTrans()">Cancel</a>
     </h2>
     <!-- <pre>Sorting tPredicate = {{tPredicate}}; tReverse = {{tReverse}}</pre> -->
@@ -260,19 +260,29 @@
       </td>
 
       <td>
-        <input type="text" ng-model="postTrCategory" ng-minlength="3" ng-maxlength="30" autofocus required>
+        <!-- <input type="text" ng-model="postTr.category" ng-minlength="3" ng-maxlength="30" autofocus required> -->
+        <select ng-init="postTr.category = categories[0]" ng-model="postTr.category" required ng-change="updateSub(postTr.category)">
+          <option ng-repeat="cat in categories" value="{{ cat.id }}">{{ cat.name }}</option>
+        </select>
       </td>
 
       <td>
-        <input type="text" ng-model="postTrSubcategory" ng-minlength="3" ng-maxlength="30" autofocus required>
+        <!-- <input type="text" ng-model="postTr.subcategory" ng-minlength="3" ng-maxlength="30" autofocus required> -->
+        <select ng-model="postTr.subcategory" required>
+          <option ng-repeat="sub in subcategories" value="{{ sub.name }}">{{ sub.name }}</option>
+        </select>
       </td>
 
       <td>
-        <input type="number" ng-model="postTrAmmount" ng-minlength="3" ng-maxlength="100000" autofocus required>
+        <input type="number" ng-model="postTr.ammount" ng-minlength="1" ng-maxlength="1000" autofocus required min="0" max="99999">
       </td>
 
       <td>
-        <input type="text" ng-model="postTrType" ng-minlength=="1" ng-maxlength="1" autofocus required>
+        <!-- <input type="text" ng-model="postTrType" ng-minlength=="1" ng-maxlength="1" autofocus required> -->
+        <select ng-model="postTr.type" ng-init="postTr.type = 'D'" required>
+          <option value="D">Debit</option>
+          <option value="C">Credit</option>
+        </select>
       </td>
   </tr>
 
