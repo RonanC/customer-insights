@@ -130,11 +130,11 @@
             </tbody>
           </table>
 
-          <a ng-hide="editMode" href="#" class="btn btn-primary" ng-click="deacUser(id)"> {{ btnActivate }} </a>
-          <a ng-hide="editMode" href="#" class="btn btn-primary" ng-click="editUser()">Edit Account</a>
+          <a ng-hide="editMode" class="btn btn-primary" ng-click="deacUser(id)"> {{ btnActivate }} </a>
+          <a ng-hide="editMode" class="btn btn-primary" ng-click="editUser()">Edit Account</a>
 
-          <a ng-show="editMode" href="#" class="btn btn-primary" ng-click="saveEdits(id, payday, county)">Save</a>
-          <a ng-show="editMode" href="#" class="btn btn-primary" ng-click="cancelEdits()">Cancel</a>
+          <a ng-show="editMode" class="btn btn-primary" ng-click="saveEdits(id, payday, county)">Save</a>
+          <a ng-show="editMode" class="btn btn-primary" ng-click="cancelEdits()">Cancel</a>
         </div>
       </div>
     </div>
@@ -147,7 +147,11 @@
 <thead>
   <tr>
     <th align="center" colspan="5">
-      <h2>Rent/Mortgage Transactions</h2>
+      <h2>Rent/Mortgage Transactions
+        <a ng-show="!postReRow" class="btn btn-primary" ng-click="togglePostRent()">Post New Rent</a>
+        <a ng-disabled="rentForm.$invalid" ng-show="postReRow" class="btn btn-primary" ng-click="rentForm.$valid && newRent(id, postReAmmount)">Save</a>
+        <a ng-show="postReRow" class="btn btn-primary" ng-click="togglePostRent()">Cancel</a>
+      </h2>
       <!-- <pre>Sorting rPredicate = {{rPredicate}}; rReverse = {{rReverse}}</pre> -->
       [ <a href="" ng-click="rPredicate=''">unsorted</a> ]
     </th>
@@ -171,8 +175,22 @@
 </thead>
 
 <tbody>
+  <tr ng-show="postReRow">
+    <td>
+      <p>{{ date | date : short }}</p>
+    </td>
+
+    <td>
+      <form name="rentForm">
+        <input type="number" ng-model="postReAmmount" ng-minlength="0" ng-maxlength="10000" autofocus required>
+        <!-- <a ng-disabled="!postReAmmount" ng-show="postReRow" class="btn btn-primary" ng-click="newRent(id, postReAmmount)">Save</a> -->
+        <!-- <button type="button" name="button" ng-disabled="rentForm.$invalid">Test</button> -->
+      </form>
+    </td>
+  </tr>
+
   <tr ng-repeat="rent_transaction in rent_transactions | orderBy:rPredicate:rReverse">
-    <td>{{ rent_transaction.rent_date }}</td>
+    <td>{{ rent_transaction.rent_date | date : short }}</td>
     <td>{{ rent_transaction.ammount | currency:"€" }}</td>
   </tr>
 </tbody>
@@ -180,13 +198,16 @@
 
 
 <!-- Transactions -->
+<form name="transForm">
 <table class="table table-condensed table-striped table-hover" ng-show="id  && !hideTrans">
 <thead>
 
 <tr>
   <th align="center" colspan="5">
     <h2>Transactions
-      <!-- <a href="#" class="btn btn-primary" ng-click="newTrans(id, , , )">Post New Transaction</a> -->
+      <a ng-show="!postTrRow" class="btn btn-primary" ng-click="togglePostTrans()">Post New Transaction</a>
+      <a ng-disabled="!transForm.$valid" ng-show="postTrRow" class="btn btn-primary" ng-click="transForm.$valid && newTrans(id, postTrCategory, postTrSubcategory, postTrAmmount, postTrType)">Save</a>
+      <a ng-show="postTrRow" class="btn btn-primary" ng-click="togglePostTrans()">Cancel</a>
     </h2>
     <!-- <pre>Sorting tPredicate = {{tPredicate}}; tReverse = {{tReverse}}</pre> -->
     [ <a href="" ng-click="tPredicate=''">unsorted</a> ]
@@ -233,9 +254,31 @@
 </thead>
 
 <tbody>
+  <tr ng-show="postTrRow" name="transForm">
+      <td>
+        <p>{{ date | date : short }}</p>
+      </td>
+
+      <td>
+        <input type="text" ng-model="postTrCategory" ng-minlength="3" ng-maxlength="30" autofocus required>
+      </td>
+
+      <td>
+        <input type="text" ng-model="postTrSubcategory" ng-minlength="3" ng-maxlength="30" autofocus required>
+      </td>
+
+      <td>
+        <input type="number" ng-model="postTrAmmount" ng-minlength="3" ng-maxlength="100000" autofocus required>
+      </td>
+
+      <td>
+        <input type="text" ng-model="postTrType" ng-minlength=="1" ng-maxlength="1" autofocus required>
+      </td>
+  </tr>
+
 <tr ng-repeat="transaction in transactions | orderBy:tPredicate:tReverse">
   <td>
-    <p>{{ transaction.date }}</p>
+    <p>{{ transaction.date | date : short }}</p>
   </td>
 
   <td>
@@ -256,6 +299,9 @@
 </tr>
 </tbody>
 </table>
+</form>
+
+
 </div>
 
 </div>

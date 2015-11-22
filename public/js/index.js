@@ -19,13 +19,70 @@ var myApp = angular.module('myApp',[]);
 myApp.controller('InfoController', ['$scope', '$http', '$window', function($scope, $http, $window) {
     var user = {};
 
+    // post stuff
+    $scope.date = new Date();
+
+    $scope.postReRow = false;
+    $scope.togglePostRent = function(){
+      $scope.postReRow = !$scope.postReRow;
+    };
+
+    $scope.postTrRow = false;
+    $scope.togglePostTrans = function(){
+      $scope.postTrRow = !$scope.postTrRow;
+    };
+
+
+    // newRent
+    $scope.newRent = function(id, ammount){
+      $scope.postRent(id, ammount);
+      $scope.togglePostRent();
+      // $scope.find(id);
+    };
+
+    // post a new rent (POST)
+    $scope.postRent = function(id, ammount){
+      $http({
+        method: 'POST',
+        url: bankingUrl + 'datathon/customer/add/rent/' + id,
+        data: {
+          "ammount": ammount
+        }
+      }).then(function successCallback(response) {
+          console.log("success" + JSON.stringify(response));
+          // $scope.user = response.data;
+          $scope.find(id);
+          //alert(JSON.stringify("success: " + response));
+        }, function errorCallback(response) {
+          console.log("error" + JSON.stringify(response));
+          //alert(JSON.stringify("error: " + response));
+          $window.alert("Error: " + response.data.error + "\nStatus: " + response.status + "\nConfig: " + JSON.stringify(response.config));
+        });
+      };
+
+      // newRent
+      $scope.newTrans = function(id, category, subcategory, ammount, type){
+        $scope.togglePostTrans();
+        $scope.postTrans(id, category, subcategory, ammount, type);
+        // $scope.find(id);
+      };
+
+    $scope.checkTrans = function(id, category, subcategory, ammount, type){
+      if (transForm.$valid) {
+        $scope.postTrans(id, category, subcategory, ammount, type);
+      }else{
+        console.log("invalid form");
+      }
+
+    };
+
     // post a new transaction (POST)
     $scope.postTrans = function(id, category, subcategory, ammount, type){
       $http({
         method: 'POST',
-        url: bankingUrl + 'datathon/customer/' + id + '/transaction',
+        url: bankingUrl + 'datathon/customer/add/transaction/' + id,
         data: {
-          "date": new Date(),
+
           "category": category,
           "subcategory": subcategory,
           "ammount": ammount,
@@ -33,7 +90,8 @@ myApp.controller('InfoController', ['$scope', '$http', '$window', function($scop
         }
       }).then(function successCallback(response) {
           console.log("success" + JSON.stringify(response));
-          $scope.user = response.data;
+          // $scope.user = response.data;
+          $scope.find(id);
           //alert(JSON.stringify("success: " + response));
         }, function errorCallback(response) {
           console.log("error" + JSON.stringify(response));
@@ -59,7 +117,7 @@ myApp.controller('InfoController', ['$scope', '$http', '$window', function($scop
       // $window.alert("id: " + id + "\npayday: " + payday + "\ncounty: " + county);
 
       // UNCOMMENT ONCE BACKEND SET UP
-      //$scope.putUser(id, payday, county.toUpperCase());
+      $scope.updateUser(id, payday, county.toUpperCase());
 
       $scope.editMode = false;
     };
@@ -71,7 +129,7 @@ myApp.controller('InfoController', ['$scope', '$http', '$window', function($scop
     };
 
     // put user information [payday, county] (PUT)
-    $scope.putUser = function(id, payday, county){
+    $scope.updateUser = function(id, payday, county){
       $http({
         method: 'PUT',
         url: bankingUrl + 'datathon/customer/' + id,
@@ -116,13 +174,13 @@ myApp.controller('InfoController', ['$scope', '$http', '$window', function($scop
       // }
 
       // ACTIVATE ONCE BACKEND HOOKED UP
-      $scope.delUser(id);
+      $scope.toggleStatus(id);
     };
 
-    $scope.delUser = function(id){
+    $scope.toggleStatus = function(id){
       $http({
-        method: 'DELETE',
-        url: bankingUrl + 'datathon/customer/' + id
+        method: 'PUT',
+        url: bankingUrl + 'datathon/customer/togglestatus/' + id
       }).then(function successCallback(response) {
           console.log("success" + JSON.stringify(response));
           // $scope.user = response.data;
@@ -150,7 +208,15 @@ myApp.controller('InfoController', ['$scope', '$http', '$window', function($scop
 
           $scope.id = response.data._id;
           $scope.balance = response.data.balance;
-          $scope.status = response.data.status;
+
+          if(response.data.status){
+            $scope.status = "open";
+          }
+          else{
+            $scope.status = "closed";
+          }
+          // $scope.status = response.data.status;
+
           $scope.income = response.data.income;
           $scope.payday = response.data.payday;
           $scope.age = response.data.age;
