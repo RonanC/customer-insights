@@ -92,100 +92,101 @@ myApp.controller('InfoController', ['$scope', '$http', '$window', function($scop
         $window.alert("Error: " + response.data.error + "\nStatus: " + response.status + "\nConfig: " + JSON.stringify(response.config));
       });
 
+    // ON SERVER NOW
     // categories
-    $scope.categories2 = [
-      {"id": "0", "name": "Auto", "sub": [
-        {"name": "Auto Other"},
-        {"name": "Car park & Tolls"},
-        {"name": "Maintenance/Service & Parts"},
-        {"name": "Motor rescue"},
-        {"name": "Petrol/fuel"}
-      ]},
-      {"id": "1", "name": "Bills & Utilities", "sub": [
-        {"name": "Bills & Utilities Other"},
-        {"name": "Cable/Satellite TV & Internet"},
-        {"name": "Telephone/Mobile"}
-      ]},
-      {"id": "2", "name": "Family", "sub": [
-        {"name": "Childcare"},
-        {"name": "School/College Fees"}
-      ]},
-      {"id": "3", "name": "Finance & Banking", "sub": [
-        {"name": "Finance & Banking Other"}
-      ]},
-      {"id": "4", "name": "Health & Personal Care", "sub": [
-        {"name": "Alternative Health"},
-        {"name": "Dental care"},
-        {"name": "Doctor"},
-        {"name": "Hair & Beauty"},
-        {"name": "Health & Personal Care Other"},
-        {"name": "Hospital"},
-        {"name": "Optician"},
-        {"name": "Pharmacy"}
-      ]},
-      {"id": "5", "name": "Household/Home", "sub": [
-        {"name": "Computers & technology"},
-        {"name": "DIY/Home Improvement"},
-        {"name": "Electrical Goods"},
-        {"name": "Garden"},
-        {"name": "Household & Home Other"},
-        {"name": "Household Maintenance"},
-        {"name": "Textiles & Furnishings"}
-      ]},
-      {"id": "6", "name": "Insurance", "sub": [
-        {"name": "Insurance"}
-      ]},
-      {"id": "7", "name": "Leisure & Entertainment", "sub": [
-        {"name": "Bars & Clubs"},
-        {"name": "Cinema & Theatre"},
-        {"name": "Club Memberships"},
-        {"name": "Food & Dining"},
-        {"name": "Gaming"},
-        {"name": "Leisure & Entertainment Other "},
-        {"name": "Music"},
-        {"name": "Newspapers"}
-      ]},
-      {"id": "8", "name": "Miscellaneous", "sub": [
-        {"name": "Charities & Donations"},
-        {"name": "Legal"},
-        {"name": "Miscellaneous Other"},
-        {"name": "Postage/Courier"},
-        {"name": "Professional Services"},
-        {"name": "Stationary & Printing"},
-        {"name": "Subscriptions"}
-      ]},
-      {"id": "9", "name": "Pets", "sub": [
-        {"name": "Pet shop"},
-        {"name": "Veterinary"}
-      ]},
-      {"id": "10", "name": "Shopping", "sub": [
-        {"name": "Catalogue shopping"},
-        {"name": "Clothing & Accessories"},
-        {"name": "Department Store"},
-        {"name": "Groceries"},
-        {"name": "Online Shopping"},
-        {"name": "Shopping Other "},
-        {"name": "Sporting"},
-        {"name": "Toys & Games"}
-      ]},
-      {"id": "11", "name": "Tax", "sub": [
-        {"name": "Tax"}
-      ]},
-      {"id": "12", "name": "Travel/Transportation", "sub": [
-        {"name": "Air Travel"},
-        {"name": "Hotel/Lodging"},
-        {"name": "Public Transport"},
-        {"name": "Taxi"},
-        {"name": "Travel & Transportation Other"},
-        {"name": "Travel Agencies"},
-        {"name": "Vehicle rental"}
-      ]},
-      {"id": "13", "name": "Withdrawals & Transfers", "sub": [
-        {"name": "ATM"},
-        {"name": "Cash Advance"},
-        {"name": "Transfer"}
-      ]}
-    ];
+    // $scope.categories2 = [
+    //   {"id": "0", "name": "Auto", "sub": [
+    //     {"name": "Auto Other"},
+    //     {"name": "Car park & Tolls"},
+    //     {"name": "Maintenance/Service & Parts"},
+    //     {"name": "Motor rescue"},
+    //     {"name": "Petrol/fuel"}
+    //   ]},
+    //   {"id": "1", "name": "Bills & Utilities", "sub": [
+    //     {"name": "Bills & Utilities Other"},
+    //     {"name": "Cable/Satellite TV & Internet"},
+    //     {"name": "Telephone/Mobile"}
+    //   ]},
+    //   {"id": "2", "name": "Family", "sub": [
+    //     {"name": "Childcare"},
+    //     {"name": "School/College Fees"}
+    //   ]},
+    //   {"id": "3", "name": "Finance & Banking", "sub": [
+    //     {"name": "Finance & Banking Other"}
+    //   ]},
+    //   {"id": "4", "name": "Health & Personal Care", "sub": [
+    //     {"name": "Alternative Health"},
+    //     {"name": "Dental care"},
+    //     {"name": "Doctor"},
+    //     {"name": "Hair & Beauty"},
+    //     {"name": "Health & Personal Care Other"},
+    //     {"name": "Hospital"},
+    //     {"name": "Optician"},
+    //     {"name": "Pharmacy"}
+    //   ]},
+    //   {"id": "5", "name": "Household/Home", "sub": [
+    //     {"name": "Computers & technology"},
+    //     {"name": "DIY/Home Improvement"},
+    //     {"name": "Electrical Goods"},
+    //     {"name": "Garden"},
+    //     {"name": "Household & Home Other"},
+    //     {"name": "Household Maintenance"},
+    //     {"name": "Textiles & Furnishings"}
+    //   ]},
+    //   {"id": "6", "name": "Insurance", "sub": [
+    //     {"name": "Insurance"}
+    //   ]},
+    //   {"id": "7", "name": "Leisure & Entertainment", "sub": [
+    //     {"name": "Bars & Clubs"},
+    //     {"name": "Cinema & Theatre"},
+    //     {"name": "Club Memberships"},
+    //     {"name": "Food & Dining"},
+    //     {"name": "Gaming"},
+    //     {"name": "Leisure & Entertainment Other "},
+    //     {"name": "Music"},
+    //     {"name": "Newspapers"}
+    //   ]},
+    //   {"id": "8", "name": "Miscellaneous", "sub": [
+    //     {"name": "Charities & Donations"},
+    //     {"name": "Legal"},
+    //     {"name": "Miscellaneous Other"},
+    //     {"name": "Postage/Courier"},
+    //     {"name": "Professional Services"},
+    //     {"name": "Stationary & Printing"},
+    //     {"name": "Subscriptions"}
+    //   ]},
+    //   {"id": "9", "name": "Pets", "sub": [
+    //     {"name": "Pet shop"},
+    //     {"name": "Veterinary"}
+    //   ]},
+    //   {"id": "10", "name": "Shopping", "sub": [
+    //     {"name": "Catalogue shopping"},
+    //     {"name": "Clothing & Accessories"},
+    //     {"name": "Department Store"},
+    //     {"name": "Groceries"},
+    //     {"name": "Online Shopping"},
+    //     {"name": "Shopping Other "},
+    //     {"name": "Sporting"},
+    //     {"name": "Toys & Games"}
+    //   ]},
+    //   {"id": "11", "name": "Tax", "sub": [
+    //     {"name": "Tax"}
+    //   ]},
+    //   {"id": "12", "name": "Travel/Transportation", "sub": [
+    //     {"name": "Air Travel"},
+    //     {"name": "Hotel/Lodging"},
+    //     {"name": "Public Transport"},
+    //     {"name": "Taxi"},
+    //     {"name": "Travel & Transportation Other"},
+    //     {"name": "Travel Agencies"},
+    //     {"name": "Vehicle rental"}
+    //   ]},
+    //   {"id": "13", "name": "Withdrawals & Transfers", "sub": [
+    //     {"name": "ATM"},
+    //     {"name": "Cash Advance"},
+    //     {"name": "Transfer"}
+    //   ]}
+    // ];
 
     $scope.updateSub = function(categoryId){
       // console.log("\n\n" + categoryId);
