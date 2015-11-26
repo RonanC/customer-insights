@@ -12,8 +12,9 @@ Contents:
 4. How we are using the Banking API
 5. Tools & Environment used
 6. Installation
-7. References
-8. Team
+7. Future Features
+8. References
+9. Team
   
 1 - About
 ---
@@ -154,6 +155,26 @@ Next to get the server up and running run:
 ```sh
 > npm start
 ```
+
+7 - Future Features
+---
+###"Safe to Spend" Balance
+We intend to include a field that shows how much money, a customer has that is "Safe to Spend".
+
+###Demographic Insights
+We intend to have a feature on another page, that allows a customer to enter in certain details such as:
+- Age
+- County
+- Sex
+- Income
+- Payday
+- Balance
+
+Once the form is submmite a D3.js chart and/or graph will be displayed, visually showing insights into the data.  
+We feel this would be a useful feature as data is only data, analysis needs to be done to pull out the actual useful "information".
+
+###New Customer
+We intend to have a page that allows people to create a new customer.  
 
 7 - References
 ---
